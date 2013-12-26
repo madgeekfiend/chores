@@ -55,9 +55,10 @@ Chores::Application.routes.draw do
   #   end
   root 'lists#index'
 
-  resources :lists do
-    resources :penalties
-    resources :chores
+  resources :lists, only: [:index,:show] do
+    resources :penalties, only: [:create,:destroy]
+    resources :chores, only: [:create,:destroy]
+    resources :notifications, only: [:create]
   end
 
   post 'lists/chores/completed' => 'chores#completed', :as=>:chore_complete
