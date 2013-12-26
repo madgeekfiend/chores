@@ -53,3 +53,12 @@ end
 group :development do
   gem 'awesome_print'
 end
+
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+  gem 'unicorn'
+end
+
+
+ruby "2.0.0"
