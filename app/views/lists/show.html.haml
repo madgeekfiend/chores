@@ -1,0 +1,21 @@
+.container
+  .row.span12{:style=>'width: 640px;'}
+    %h2 List for #{@list.name}
+    %h3 Chores
+    - if @admin
+      =form_for [@list, Chore.new], :remote=>true do |f|
+        =f.text_field(:name, :placeholder=>'Enter a new chore', :size=>55)
+        = f.hidden_field :list_id, :value=>@list.id
+        =f.submit 'New'
+    = render partial: 'lists/chores_table'
+
+  .row.span12{:style=>'width: 640px;'}
+    %h3 Penalties
+    Total: #{number_to_currency(@total_penalties, :unit=> '$')}
+    - if @admin
+      = form_for [@list, Penalty.new], :remote=>true, :html=>{:class=>'form-inline'} do |f|
+        =f.text_field(:name, :placeholder=>'Enter penalty', :size=>55)
+        =f.text_field(:amount, :placeholder=>'Amount', :value=>'2.00', :size=>5)
+        =f.hidden_field :list_id, :value=> @list.id
+        =f.submit 'New'
+    = render partial: 'lists/penalties_table'

@@ -1,0 +1,12 @@
+.table-responsive
+  %table#penalty-table.table
+    %colgroup
+      %col{:span=>'1',:style=>'width: 50%;'}
+      %col{:span=>'1',:style=>'width: 10%'}
+      %col{:span=>'1', :style=>'width: 10%'}
+    %thead
+      %tr
+        %th Description
+        %th Date
+        %th Amount
+    = render @list.penalties
