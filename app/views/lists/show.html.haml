@@ -1,6 +1,6 @@
 .container
   .row.span12
-    %h2 List for #{@list.name}
+    %h2 #{@list.name} Chores & Penalties
     %h3 Chores
     - if @admin
       =form_for [@list, Chore.new], :remote=>true do |f|
