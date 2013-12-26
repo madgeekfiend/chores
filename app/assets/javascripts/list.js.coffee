@@ -24,6 +24,15 @@ $ ->
     table.append("<tr><td>#{data.name}</td><td>#{created_date.toString('MM/dd/yyyy')}</td><td>$#{amount}</td></tr>")
   )
 
+  $('#new_notification').on("ajax:success", (e,data,status,xhr) ->
+    #Clear out boxes
+    $('#new_notification :input[id=notification_phone]').val('')
+    $('#new_notification :input[id=notification_role]').val('choree')
+    # Notifications table
+    table = $('#notifications-table')
+    table.append("<tr><td>#{data.phone}</td><td>#{data.role}</td></tr>")
+  )
+
   $('a[data-remote=true].chore').on('ajax:success', (e,data,status,xhr)->
     $("#chore-table tr[data-chore-id=#{data.id}]").remove()
   )

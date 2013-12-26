@@ -1,6 +1,8 @@
 .container
   .row.span12
     %h2 #{@list.name} Chores & Penalties
+    - if @admin
+      %button.btn.btn-primary.btn-lg{:data=>{:toggle=>'modal',:target=>'#NotificationsModal'}}Notifications
     %h3 Chores
     - if @admin
       =form_for [@list, Chore.new], :remote=>true do |f|
@@ -19,3 +21,8 @@
         =f.hidden_field :list_id, :value=> @list.id
         =f.submit 'New'
     = render partial: 'lists/penalties_table'
+
+<!-- Modal -->
+- if @admin
+  =render partial: 'lists/notifications_modal'
+

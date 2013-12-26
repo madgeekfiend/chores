@@ -1,0 +1,24 @@
+#NotificationsModal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{:type=>'button','data-dismiss'=>'modal','aria-hidden'=>true}X
+        %h4 Notifications
+      .modal-body
+        .table-responsive
+          %table#notifications-table.table
+            %thead
+              %th Email
+              %th role
+            -@list.notifications.each do |notification|
+              %tr
+                %td #{notification.phone}
+                %td #{notification.role}
+      .modal-footer
+        =form_for([@list,Notification.new],remote: true,html: {class: 'form-inline'}) do |f|
+          =f.text_field :phone, size: 40, placeholder: 'Email Address'
+          =f.select "role", "<option>choree</option><option>admin</option>".html_safe
+          =f.submit 'New'
+        %br
+        %button.btn.btn-default{:type=>'button','data-dismiss'=>'modal'}Close
+        %button.btn.btn-primary{:type=>'button'}Add
