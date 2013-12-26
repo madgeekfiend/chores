@@ -5,7 +5,9 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @admin = true if params[:password] == @list.password.password
+    if not params[:password].blank?
+      @admin = true if params[:password] == @list.password.password
+    end
     @total_penalties = @list.penalties.sum(:amount)
   end
 
