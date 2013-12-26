@@ -1,5 +1,5 @@
 .container
-  .row.span12{:style=>'width: 640px;'}
+  .row.span12
     %h2 List for #{@list.name}
     %h3 Chores
     - if @admin
@@ -9,7 +9,7 @@
         =f.submit 'New'
     = render partial: 'lists/chores_table'
 
-  .row.span12{:style=>'width: 640px;'}
+  .row.span12
     %h3 Penalties
     Total: #{number_to_currency(@total_penalties, :unit=> '$')}
     - if @admin

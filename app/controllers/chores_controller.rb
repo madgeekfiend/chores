@@ -11,6 +11,11 @@ class ChoresController < ApplicationController
     chore.isDone = true
     chore.save!
 
+    notify_email = list.notifications.where(:role=>'admin')
+    notify_email.each do |notify|
+      ChoreMailer.chore_completed(chore,notify.phone).deliver
+    end
+
     render :json => chore, :status=>:ok
   end
 

@@ -1,28 +1,14 @@
-== README
+== Chore
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails app written to help me create chores for my son. If my son failed to do a chore we would punish him by monetary penalization.
 
-Things you may want to cover:
+== Setup
 
-* Ruby version
+Set these environment variables
 
-* System dependencies
+    * MANDRILLAPP_HOST
+    * MANDRILLAPP_USERNAME
+    * MANDRILLAPP_PASSWORD
 
-* Configuration
+This is used by Mandrill powered by Mail Chimp.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
