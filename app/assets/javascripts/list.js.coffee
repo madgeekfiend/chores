@@ -36,3 +36,17 @@ $ ->
   $('a[data-remote=true].chore').on('ajax:success', (e,data,status,xhr)->
     $("#chore-table tr[data-chore-id=#{data.id}]").remove()
   )
+
+  $('#close-pay-button').click(->
+    # Now submit this
+    form_data = $('#close-form').serialize()
+    action = $('#close-form').attr('action')
+    $.post(
+      action,
+      form_data,
+      (data,status,xhr)->
+        window.location.reload(true)
+    )
+    $('#close-form')[0].reset()
+
+  )

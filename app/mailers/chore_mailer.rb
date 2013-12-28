@@ -17,4 +17,10 @@ class ChoreMailer < ActionMailer::Base
     mail(to: to_email, subject: 'Chore Completed')
   end
 
+  def list_paid_and_closed(list,amount_paid,to_email)
+    @list = list
+    @amount_paid = amount_paid
+    mail(to:to_email, subject: 'You have been paid')
+  end
+
 end
