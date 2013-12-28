@@ -61,6 +61,7 @@ Chores::Application.routes.draw do
     resources :notifications, only: [:create]
   end
 
-  post 'lists/chores/completed' => 'chores#completed', :as=>:chore_complete
+  post 'lists/chores/completed' => 'chores#completed', as: :chore_complete
+  post 'lists/:id/reset' => 'lists#reset', as: :list_reset
 
 end

@@ -1,0 +1,18 @@
+#close-and-pay-modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{:type=>'button','data-dismiss'=>'modal','aria-hidden'=>true}X
+        %h4 Close and Pay
+      .modal-body
+        %p
+          Total Penalties: #{number_to_currency(@list.penalties.sum(:amount), unit: '$')} <br />
+        %p
+          *WARNING* by paying and closing you will be resetting the chore list. This action can not be reversed.
+        =form_tag '#', method: :post, id: 'close-form' do
+          = text_field_tag :amount, nil, placeholder: '$20.00',  size: '25'
+      .modal-footer
+        %button.btn.btn-default{ type: 'button','data-dismiss'=> 'modal'}Cancel
+        %button#close-pay-button.btn.btn-primary{:type=>'button','data-dismiss'=>'modal'}Close & Pay
+
+

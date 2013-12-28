@@ -3,7 +3,7 @@
     %h2 #{@list.name} Chores & Penalties
     - if @admin
       %button.btn.btn-primary.btn-sm{:data=>{:toggle=>'modal',:target=>'#NotificationsModal'}}Notifications
-      %button.btn.btn-primary.btn-sm#close-and-pay-button Close & Pay
+      %button.btn.btn-primary.btn-sm#close-and-pay-button{data: {toggle: 'modal',target: '#close-and-pay-modal'}} Close & Pay
     %h3 Chores
     - if @admin
       =form_for [@list, Chore.new], :remote=>true do |f|
@@ -26,4 +26,5 @@
 <!-- Modal -->
 - if @admin
   =render partial: 'lists/notifications_modal'
+  =render partial: 'lists/list_close_pay_modal'
 
