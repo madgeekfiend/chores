@@ -2,7 +2,8 @@
   .row.span12
     %h2 #{@list.name} Chores & Penalties
     - if @admin
-      %button.btn.btn-primary.btn-lg{:data=>{:toggle=>'modal',:target=>'#NotificationsModal'}}Notifications
+      %button.btn.btn-primary.btn-sm{:data=>{:toggle=>'modal',:target=>'#NotificationsModal'}}Notifications
+      %button.btn.btn-primary.btn-sm#close-and-pay-button Close & Pay
     %h3 Chores
     - if @admin
       =form_for [@list, Chore.new], :remote=>true do |f|
