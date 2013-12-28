@@ -9,8 +9,10 @@
           Total Penalties: #{number_to_currency(@list.penalties.sum(:amount), unit: '$')} <br />
         %p
           *WARNING* by paying and closing you will be resetting the chore list. This action can not be reversed.
-        =form_tag '#', method: :post, id: 'close-form' do
-          = text_field_tag :amount, nil, placeholder: '$20.00',  size: '25'
+        =form_tag list_reset_url(@list.id), method: :post, id: 'close-form' do
+          = text_field_tag :amount, nil, placeholder: '20.00',  size: '25'
+          = hidden_field_tag :password, @password
+          = hidden_field_tag :list_id, @list.id
       .modal-footer
         %button.btn.btn-default{ type: 'button','data-dismiss'=> 'modal'}Cancel
         %button#close-pay-button.btn.btn-primary{:type=>'button','data-dismiss'=>'modal'}Close & Pay
