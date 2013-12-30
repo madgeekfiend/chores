@@ -33,7 +33,7 @@ $ ->
     table.append("<tr><td>#{data.phone}</td><td>#{data.role}</td></tr>")
   )
 
-  $('#chore-button').click( ->
+  $('button[id=chore-button]').click( ->
     chore_id = $(this).data('chore-id')
     list_id = $(this).data('list-id')
 
