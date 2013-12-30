@@ -33,8 +33,17 @@ $ ->
     table.append("<tr><td>#{data.phone}</td><td>#{data.role}</td></tr>")
   )
 
-  $('a[data-remote=true].chore').on('ajax:success', (e,data,status,xhr)->
-    $("#chore-table tr[data-chore-id=#{data.id}]").remove()
+  $('#chore-button').click( ->
+    chore_id = $(this).data('chore-id')
+    list_id = $(this).data('list-id')
+
+    $.post('chores/completed',
+      { 'chore_id': chore_id, 'list_id': list_id},
+      (data,status,xhr)->
+        cells = $("#chore-table tr[data-chore-id=#{chore_id}] td")
+        $(cells[1]).replaceWith('<td>Done</td>')
+        $(cells[2]).replaceWith('<td></td>')
+    )
   )
 
   $('#close-pay-button').click(->

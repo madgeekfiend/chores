@@ -6,4 +6,4 @@
     - if @admin
       = link_to 'Delete', list_chore_path(@list.id,chore.id), :remote=>true, :method=>:delete,:class=>'chore'
     - if not chore.isDone?
-      = link_to 'Complete', '#', :data=>{:remote=>true, :chore_id=>chore.id, :list_id=>@list.id}
+      %button#chore-button.btn.btn-primary.btn-sm{:data=>{:remote=>true, :chore_id=>chore.id, :list_id=>@list.id}}Complete
