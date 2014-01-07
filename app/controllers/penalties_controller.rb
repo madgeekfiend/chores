@@ -2,6 +2,10 @@ class PenaltiesController < ApplicationController
 
   def create
     list = List.find(params[:list_id])
+    if params[:penalty][:name].blank? or params[:penalty][:amount].blank?
+      head 400
+      return
+    end
     penalty = list.penalties.create(chore_params)
     notify_email = list.notifications.where(:role=>'choree')
     notify_email.each do |email|

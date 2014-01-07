@@ -21,6 +21,10 @@ class ChoresController < ApplicationController
 
   def create
     list = List.find(params[:list_id])
+    if params[:chore][:name].blank?
+      head 400
+      return
+    end
     chore = list.chores.create(chore_params)
     notify_email = list.notifications.where(:role=>'choree')
     notify_email.each do |email|
